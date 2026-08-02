@@ -1,0 +1,46 @@
+---
+// src/components/layout/AboutSection.astro
+---
+<section id="about" class="w-full max-w-7xl mx-auto px-6 py-24 border-l border-r border-b border-workbench-border">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    
+    <!-- Section Header -->
+    <div class="lg:col-span-4 flex flex-col items-start">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="h-px w-8 bg-workbench-accent"></div>
+        <span class="font-mono text-xs tracking-widest text-workbench-accent uppercase">
+          // 01. About Me
+        </span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-workbench-text">
+        System architecture meets frontend precision.
+      </h2>
+    </div>
+
+    <!-- Section Content -->
+    <div class="lg:col-span-8 flex flex-col gap-6">
+      <p class="text-lg text-workbench-muted font-body leading-relaxed">
+        I am a Full-Stack Developer with professional experience architecting, containerizing, and operating production microservices. I specialize in bridging the gap between heavy backend systems (like AI-powered IoT and healthcare infrastructure) and dynamic, highly-optimized frontend interfaces.
+      </p>
+      <p class="text-lg text-workbench-muted font-body leading-relaxed">
+        Over the past year, I have delivered 7 comprehensive full-stack projects spanning the manufacturing and healthcare domains. My approach focuses on creating decoupled microservices, real-time data pipelines, and Docker-based infrastructure that scale effortlessly.
+      </p>
+      
+      <!-- Education Snapshot -->
+      <div class="mt-8 p-6 border border-workbench-border bg-workbench-surface/50">
+        <h3 class="font-mono text-sm tracking-widest text-workbench-text uppercase mb-4">Education</h3>
+        <ul class="flex flex-col gap-4">
+          <li class="flex flex-col">
+            <span class="text-workbench-text font-display font-medium text-lg">Bachelor of Computer Science</span>
+            <span class="text-workbench-muted text-sm font-mono mt-1">University of Technology Yogyakarta | GPA: 3.69/4.00</span>
+          </li>
+          <li class="flex flex-col">
+            <span class="text-workbench-text font-display font-medium text-lg">Full-Stack Developer Bootcamp</span>
+            <span class="text-workbench-muted text-sm font-mono mt-1">DumbWays Indonesia | Dec 2024 – Jul 2025</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+</section>

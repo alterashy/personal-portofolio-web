@@ -1,0 +1,67 @@
+---
+// src/components/layout/ExperienceSection.astro
+
+const experiences = [
+  {
+    role: "Solo Developer",
+    company: "Independent Maker",
+    date: "August 2026 – Present",
+    description: "Architecting and engineering scalable web products from scratch. Handling full-cycle development from system design and backend APIs to frontend interfaces and deployment.",
+    projects: [
+      "Building robust, isolated product experiences utilizing modern web frameworks.",
+      "Focusing on highly-optimized, SEO-friendly architectures and resilient deployment pipelines."
+    ]
+  },
+  {
+    role: "Full-Stack Developer",
+    company: "Widya Robotics",
+    date: "October 2025 – August 2026",
+    description: "Built full-stack web applications for AI-powered industrial monitoring and healthcare products. Containerized, deployed, and operated multi-service stacks in production.",
+    projects: [
+      "AI Quality-Control System: Architected a decoupled microservices system with TimescaleDB and Redis Streams for scalable real-time event distribution.",
+      "AI Smart-Factory Counting System: Built a production microservices system with modular NestJS backend, IoT integration (MQTT), and Next.js frontend with live HLS streaming.",
+      "AI Clinic Chatbot / RAG: Built full-stack product around a RAG engine with FastAPI, Next.js, and PostgreSQL + pgvector.",
+      "AI Conveyor Sack-Counting System: Rewrote legacy system into a modern multi-service architecture with Next.js and PostgreSQL."
+    ]
+  }
+];
+---
+
+<section id="experience" class="w-full max-w-7xl mx-auto px-6 py-24 border-l border-r border-b border-workbench-border">
+  <div class="flex items-center gap-4 mb-12">
+    <div class="h-px w-8 bg-workbench-accent"></div>
+    <span class="font-mono text-xs tracking-widest text-workbench-accent uppercase">
+      // 02. Experience Log
+    </span>
+  </div>
+
+  <div class="flex flex-col gap-12">
+    {experiences.map((exp) => (
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <!-- Date / Meta -->
+        <div class="md:col-span-3 pt-1">
+          <span class="font-mono text-sm text-workbench-muted">{exp.date}</span>
+        </div>
+        
+        <!-- Content -->
+        <div class="md:col-span-9 flex flex-col">
+          <h3 class="text-2xl font-display font-bold text-workbench-text mb-1">{exp.role}</h3>
+          <span class="text-lg font-display text-workbench-accent mb-4">{exp.company}</span>
+          
+          <p class="text-workbench-muted font-body mb-6 leading-relaxed">
+            {exp.description}
+          </p>
+          
+          <ul class="flex flex-col gap-4">
+            {exp.projects.map(project => (
+              <li class="flex items-start gap-3">
+                <div class="mt-2 w-1.5 h-1.5 rounded-none bg-workbench-border shrink-0"></div>
+                <span class="text-workbench-muted font-body leading-relaxed">{project}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

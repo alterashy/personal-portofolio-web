@@ -1,0 +1,49 @@
+---
+// src/components/layout/SkillsSection.astro
+
+const skillCategories = [
+  {
+    title: "Full-Stack & APIs",
+    skills: ["TypeScript", "Python", "NestJS", "FastAPI", "Next.js", "React", "Node.js", "Tailwind CSS", "RESTful APIs", "OpenAPI"]
+  },
+  {
+    title: "Databases & Real-Time",
+    skills: ["PostgreSQL (pgvector, TimescaleDB)", "Redis (Streams, Pub/Sub)", "Socket.IO", "MQTT", "Prisma", "TypeORM", "SQLAlchemy"]
+  },
+  {
+    title: "AI & Media Integration",
+    skills: ["Computer Vision (YOLO)", "RAG/LLM APIs", "RTSP/HLS Video Streaming", "MediaMTX", "FFmpeg"]
+  },
+  {
+    title: "DevOps & Architecture",
+    skills: ["Microservices Architecture", "Docker", "Docker Compose", "Nginx", "S3 Storage", "Prometheus", "Git", "CI/CD"]
+  }
+];
+---
+
+<section id="skills" class="w-full max-w-7xl mx-auto px-6 py-24 border-l border-r border-b border-workbench-border">
+  <div class="flex items-center gap-4 mb-12">
+    <div class="h-px w-8 bg-workbench-accent"></div>
+    <span class="font-mono text-xs tracking-widest text-workbench-accent uppercase">
+      // 03. Technical Stack
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    {skillCategories.map((category) => (
+      <div class="flex flex-col">
+        <h3 class="font-display font-semibold text-xl text-workbench-text mb-6 pb-4 border-b border-workbench-border">
+          {category.title}
+        </h3>
+        <ul class="flex flex-col gap-3">
+          {category.skills.map(skill => (
+            <li class="font-mono text-sm text-workbench-muted flex items-center gap-2">
+              <span class="text-workbench-accent">›</span>
+              {skill}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
