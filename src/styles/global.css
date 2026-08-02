@@ -28,6 +28,10 @@
 
 /* Base styles to apply the theme globally */
 @layer base {
+  html {
+    scroll-padding-top: 4rem; /* Offset for sticky header (h-16 = 4rem) */
+  }
+
   body {
     @apply bg-workbench-bg text-workbench-text font-body antialiased selection:bg-workbench-accent/30 selection:text-white;
   }
