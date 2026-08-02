@@ -23,10 +23,7 @@
     opacity: 0.15;
   }
   
-  /* Radial glow for accenting specific areas */
-  .glow-accent {
-    background: radial-gradient(circle at center, rgba(240, 86, 46, 0.15) 0%, transparent 70%);
-  }
+
 }
 
 /* Base styles to apply the theme globally */
