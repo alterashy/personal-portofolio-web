@@ -1,0 +1,73 @@
+---
+// src/layouts/ProductLayout.astro
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { 
+  title, 
+  description = "A product by Syifa Maulaya.",
+  image = "/og-image.png"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+  </head>
+  <body class="relative min-h-screen bg-workbench-bg">
+    <!-- Signature Background Element -->
+    <div class="grid-overlay bg-structural-grid"></div>
+    
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <!-- Minimalist Return Link for Product Pages -->
+      <div class="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-50">
+        <a href="/products" class="font-mono text-xs uppercase tracking-widest text-workbench-muted hover:text-workbench-accent transition-colors">
+          &larr; Back to Products
+        </a>
+        <a href="/" class="font-mono text-xs uppercase tracking-widest text-workbench-muted hover:text-workbench-accent transition-colors">
+          Syifa.M
+        </a>
+      </div>
+
+      <slot />
+      
+      <!-- Minimalist Product Footer -->
+      <footer class="mt-auto border-t border-workbench-border py-8 text-center">
+        <span class="font-mono text-xs text-workbench-muted uppercase">
+          &copy; {new Date().getFullYear()} // All Systems Nominal
+        </span>
+      </footer>
+    </div>
+  </body>
+</html>

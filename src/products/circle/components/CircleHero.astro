@@ -1,0 +1,55 @@
+---
+// src/products/circle/components/CircleHero.astro
+import Button from '../../../components/ui/Button.astro';
+import { circleData } from '../data';
+import circleMockup from '../assets/circle-mockup.png';
+---
+
+<section class="relative w-full max-w-7xl mx-auto px-6 pt-32 pb-0 md:pt-40 border-l border-r border-workbench-border flex flex-col items-center overflow-hidden">
+  
+  <div class="flex flex-col items-center justify-center text-center relative z-10">
+    <div class="inline-flex items-center gap-3 px-4 py-2 border border-workbench-border bg-workbench-surface text-workbench-text font-mono text-[10px] uppercase tracking-widest mb-12">
+      <div class="w-1.5 h-1.5 bg-workbench-accent rounded-full animate-pulse"></div>
+      {circleData.name} v2.0 is Live
+    </div>
+
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-extrabold text-workbench-text leading-tight mb-8 max-w-5xl">
+      {circleData.tagline}
+    </h1>
+
+    <p class="text-lg md:text-xl text-workbench-muted font-body max-w-2xl leading-relaxed mb-12">
+      {circleData.description}
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
+      <Button href="#pricing" variant="primary" class="w-full sm:w-auto">
+        {circleData.cta.primary}
+      </Button>
+      <Button href="#features" variant="outline" class="w-full sm:w-auto">
+        {circleData.cta.secondary}
+      </Button>
+    </div>
+  </div>
+
+  <!-- Hero Image (Mockup) -->
+  <div class="relative w-full max-w-5xl mx-auto mt-24 border-t border-l border-r border-workbench-border bg-workbench-bg p-4 pb-0 rounded-t-xl z-20">
+    
+    <!-- Geometric Window Controls -->
+    <div class="flex items-center gap-3 mb-4 px-2">
+      <div class="w-2 h-2 bg-workbench-border"></div>
+      <div class="w-2 h-2 bg-workbench-border"></div>
+      <div class="w-2 h-2 bg-workbench-border"></div>
+    </div>
+    
+    <!-- Image -->
+    <div class="border border-workbench-border border-b-0 overflow-hidden relative">
+      <img 
+        src={circleMockup.src} 
+        alt="Circle Workspace Interface" 
+        class="w-full h-auto object-cover object-top opacity-90 hover:opacity-100 transition-opacity duration-500"
+      />
+      <!-- Bottom Fade -->
+      <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-workbench-bg to-transparent"></div>
+    </div>
+  </div>
+</section>
