@@ -1,0 +1,41 @@
+---
+// src/components/ui/Button.astro
+
+export interface Props {
+  href: string;
+  variant?: 'primary' | 'outline' | 'ghost';
+  class?: string;
+  target?: string;
+  rel?: string;
+  download?: boolean;
+}
+
+const { 
+  href, 
+  variant = 'primary', 
+  class: className = '',
+  target,
+  rel,
+  download
+} = Astro.props;
+
+const baseStyles = "inline-flex items-center justify-center px-8 py-4 font-display font-bold text-lg tracking-wide uppercase transition-colors duration-200 border";
+
+const variantStyles = {
+  primary: "bg-workbench-accent text-white border-workbench-accent hover:bg-orange-600",
+  outline: "bg-transparent text-workbench-text border-workbench-border hover:bg-workbench-surface",
+  ghost: "bg-transparent text-workbench-muted border-transparent hover:text-workbench-accent hover:bg-workbench-surface px-4 py-2 text-sm"
+};
+
+const finalClass = `${baseStyles} ${variantStyles[variant]} ${className}`;
+---
+
+<a 
+  href={href} 
+  class={finalClass}
+  target={target}
+  rel={rel}
+  download={download}
+>
+  <slot />
+</a>

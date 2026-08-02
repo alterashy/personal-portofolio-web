@@ -1,0 +1,52 @@
+---
+// src/components/layout/Footer.astro
+
+const currentYear = new Date().getFullYear();
+
+const socials = [
+  { label: 'GitHub', href: 'https://github.com/alterashy' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/syifamaulaya' },
+  { label: 'Email', href: 'mailto:maulayasyifa.mail@gmail.com' }
+];
+---
+
+<footer class="w-full bg-workbench-bg border-t border-workbench-border mt-auto">
+  <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-start md:items-center justify-between border-l border-r border-workbench-border gap-8">
+    
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center gap-2">
+        <div class="w-2 h-2 bg-workbench-muted"></div>
+        <span class="font-display font-bold text-lg text-workbench-text uppercase">
+          Syifa Maulaya
+        </span>
+      </div>
+      <p class="font-mono text-xs text-workbench-muted tracking-widest uppercase">
+        Full-Stack Developer | Cirebon, Indonesia
+      </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12">
+      <ul class="flex flex-wrap items-center gap-6">
+        {socials.map((social) => (
+          <li>
+            <a 
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-mono text-sm uppercase text-workbench-muted hover:text-workbench-accent transition-colors"
+            >
+              [{social.label}]
+            </a>
+          </li>
+        ))}
+      </ul>
+      
+      <div class="text-right">
+        <span class="font-mono text-xs text-workbench-border">
+          &copy; {currentYear} // ALL SYSTEMS FUNCTIONAL
+        </span>
+      </div>
+    </div>
+    
+  </div>
+</footer>
