@@ -19,12 +19,12 @@ const {
   download
 } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center px-8 py-4 font-display font-bold text-lg tracking-wide uppercase transition-colors duration-200 border";
+const baseStyles = "inline-flex items-center justify-center font-display font-bold tracking-wide uppercase transition-colors duration-200 border text-center whitespace-nowrap";
 
 const variantStyles = {
-  primary: "bg-workbench-accent text-white border-workbench-accent hover:bg-orange-600",
-  outline: "bg-transparent text-workbench-text border-workbench-border hover:bg-workbench-surface",
-  ghost: "bg-transparent text-workbench-muted border-transparent hover:text-workbench-accent hover:bg-workbench-surface px-4 py-2 text-sm"
+  primary: "px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg bg-workbench-accent text-white border-workbench-accent hover:bg-orange-600",
+  outline: "px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg bg-transparent text-workbench-text border-workbench-border hover:bg-workbench-surface",
+  ghost: "px-2 py-2 sm:px-4 sm:py-2 text-xs sm:text-sm bg-transparent text-workbench-muted border-transparent hover:text-workbench-accent hover:bg-workbench-surface"
 };
 
 const finalClass = `${baseStyles} ${variantStyles[variant]} ${className}`;
