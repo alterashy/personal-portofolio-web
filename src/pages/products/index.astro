@@ -20,60 +20,27 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       Engineered Products.
     </h1>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      
-      <!-- Circle Product Card -->
-      <a href="/products/circle" class="group flex flex-col border border-workbench-border bg-workbench-bg hover:border-workbench-accent transition-colors duration-300 relative overflow-hidden">
-        <div class="p-8 flex flex-col flex-grow">
-          
-          <div class="flex items-start justify-between mb-6">
-            <div class="flex items-center gap-3">
-              <div class="w-3 h-3 bg-workbench-accent"></div>
-              <h2 class="text-2xl font-display font-bold text-workbench-text group-hover:text-workbench-accent transition-colors">
-                Circle
-              </h2>
-            </div>
-            <!-- Status Badge -->
-            <div class="px-3 py-1 bg-workbench-surface border border-workbench-border">
-              <span class="font-mono text-[10px] text-workbench-accent tracking-widest uppercase flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-workbench-accent rounded-full animate-pulse"></span>
-                LIVE
-              </span>
-            </div>
-          </div>
-          
-          <p class="text-workbench-muted font-body leading-relaxed mb-8 flex-grow">
-            The real-time collaborative workspace. A centralized hub for remote teams to collaborate on documents without context switching.
-          </p>
-          
-          <!-- Technical Tags -->
-          <div class="flex flex-wrap items-center gap-2 mb-8">
-            {['SaaS', 'Real-Time', 'WebSockets'].map(tag => (
-              <span class="px-2 py-1 bg-workbench-surface border border-workbench-border font-mono text-[10px] text-workbench-muted uppercase tracking-widest">
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <!-- CTA -->
-          <div class="w-full pt-6 border-t border-workbench-border flex items-center justify-between">
-            <span class="font-mono text-xs tracking-widest text-workbench-text uppercase transition-all group-hover:text-workbench-accent">
-              Access System
-            </span>
-            <span class="font-mono text-workbench-accent group-hover:translate-x-2 transition-transform duration-300">
-              &rarr;
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Placeholder for future products -->
-      <div class="border border-workbench-border border-dashed flex flex-col items-center justify-center text-center opacity-50 bg-workbench-bg aspect-[16/9] lg:aspect-auto">
-        <span class="font-mono text-sm tracking-widest text-workbench-muted uppercase">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Placeholder slots for upcoming products -->
+      <div class="border border-workbench-border border-dashed p-12 flex flex-col items-center justify-center text-center bg-workbench-surface/10 min-h-[280px]">
+        <div class="w-3 h-3 bg-workbench-muted/40 mb-4"></div>
+        <span class="font-mono text-sm tracking-widest text-workbench-muted uppercase mb-2">
           [ Slot Available ]
         </span>
+        <p class="font-body text-xs text-workbench-muted/60 max-w-xs">
+          New standalone tools and SaaS systems currently in development.
+        </p>
       </div>
-      
+
+      <div class="border border-workbench-border border-dashed p-12 flex flex-col items-center justify-center text-center bg-workbench-surface/10 min-h-[280px]">
+        <div class="w-3 h-3 bg-workbench-muted/40 mb-4"></div>
+        <span class="font-mono text-sm tracking-widest text-workbench-muted uppercase mb-2">
+          [ In Progress ]
+        </span>
+        <p class="font-body text-xs text-workbench-muted/60 max-w-xs">
+          Product architectures and public utilities under active engineering.
+        </p>
+      </div>
     </div>
   </main>
 </BaseLayout>
