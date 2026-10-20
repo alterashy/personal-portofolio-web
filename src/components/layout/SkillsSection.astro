@@ -1,45 +1,134 @@
 ---
 // src/components/layout/SkillsSection.astro
+import TechIcon from '../ui/TechIcon.astro';
 
-const skillCategories = [
+// Primary daily drivers - ordered Backend, Frontend, Databases, Infra
+const primaryDrivers = [
+  "TypeScript",
+  "FastAPI",
+  "NestJS",
+  "Next.js",
+  "PostgreSQL",
+  "Docker"
+];
+
+// Reordered: Backend, Frontend, Databases, Infra (Language -> Library -> Framework within each)
+const architecturalPillars = [
   {
-    title: "Full-Stack & APIs",
-    skills: ["TypeScript", "Python", "NestJS", "FastAPI", "Next.js", "React", "Node.js", "Tailwind CSS", "RESTful APIs", "OpenAPI"]
+    id: "01",
+    title: "Backend",
+    code: "BACKEND",
+    technologies: [
+      { name: "TypeScript" },
+      { name: "Node.js" },
+      { name: "Python" },
+      { name: "Express" },
+      { name: "NestJS" },
+      { name: "FastAPI" }
+    ]
   },
   {
-    title: "Databases & Real-Time",
-    skills: ["PostgreSQL (pgvector, TimescaleDB)", "Redis (Streams, Pub/Sub)", "Socket.IO", "MQTT", "Prisma", "TypeORM", "SQLAlchemy"]
+    id: "02",
+    title: "Frontend",
+    code: "FRONTEND",
+    technologies: [
+      { name: "TypeScript" },
+      { name: "React" },
+      { name: "Next.js" },
+      { name: "Astro" },
+      { name: "Tailwind CSS" },
+      { name: "Zustand" },
+      { name: "Tanstack" }
+    ]
   },
   {
-    title: "AI & Media Integration",
-    skills: ["Computer Vision (YOLO)", "RAG/LLM APIs", "RTSP/HLS Video Streaming", "MediaMTX", "FFmpeg"]
+    id: "03",
+    title: "Databases",
+    code: "DATABASES",
+    technologies: [
+      { name: "SQLite" },
+      { name: "PostgreSQL" },
+      { name: "Redis" },
+      { name: "Prisma" },
+      { name: "TypeORM" }
+    ]
   },
   {
-    title: "DevOps & Architecture",
-    skills: ["Microservices Architecture", "Docker", "Docker Compose", "Nginx", "S3 Storage", "Prometheus", "Git", "CI/CD"]
+    id: "04",
+    title: "DevOps & Cloud",
+    code: "DEVOPS_CLOUD",
+    technologies: [
+      { name: "Nginx" },
+      { name: "Docker" },
+      { name: "Google Cloud Platform" },
+      { name: "Prometheus" },
+      { name: "Grafana" },
+      { name: "CI/CD" }
+    ]
   }
 ];
 ---
 
 <section id="skills" class="w-full max-w-7xl mx-auto px-6 py-24 border-l border-r border-b border-workbench-border">
-  <div class="flex items-center gap-4 mb-12">
-    <div class="h-px w-8 bg-workbench-accent"></div>
-    <span class="font-mono text-xs tracking-widest text-workbench-accent uppercase">
-      // 03. Technical Stack
-    </span>
+  <!-- Section Eyebrow -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-workbench-border/60">
+    <div class="flex items-center gap-4">
+      <div class="h-px w-8 bg-workbench-accent"></div>
+      <span class="font-mono text-xs tracking-widest text-workbench-accent uppercase">
+        // 03. Technical Stack
+      </span>
+    </div>
+    <div class="flex items-center gap-3 text-xs font-mono text-workbench-muted">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-workbench-surface border border-workbench-border">
+        <span class="w-2 h-2 bg-emerald-500"></span>
+        <span>PRODUCTION VERIFIED</span>
+      </span>
+      <span class="hidden md:inline text-workbench-border">•</span>
+      <span class="hidden md:inline text-workbench-muted">4 DOMAINS</span>
+    </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-    {skillCategories.map((category) => (
-      <div class="flex flex-col">
-        <h3 class="font-display font-semibold text-xl text-workbench-text mb-6 pb-4 border-b border-workbench-border">
-          {category.title}
-        </h3>
-        <ul class="flex flex-col gap-3">
-          {category.skills.map(skill => (
-            <li class="font-mono text-sm text-workbench-muted flex items-center gap-2">
-              <span class="text-workbench-accent">›</span>
-              {skill}
+  <!-- Primary Daily Drivers Ribbon (Simplified) -->
+  <div class="mb-10 p-4 sm:p-5 bg-workbench-surface/30 border border-workbench-border">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="flex items-center gap-2 text-workbench-muted font-mono text-xs uppercase tracking-wider shrink-0">
+        <span class="text-workbench-accent font-bold">// CORE STACK:</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-2.5">
+        {primaryDrivers.map((driver) => (
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-workbench-surface/80 border border-workbench-border hover:border-workbench-accent/50 transition-colors">
+            <TechIcon name={driver} class="w-4 h-4" />
+            <span class="font-display font-medium text-xs text-workbench-text">{driver}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 Compact Pillars (Backend, Frontend, Databases, Infra side-by-side) -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+    {architecturalPillars.map((pillar) => (
+      <div class="flex flex-col bg-workbench-surface/20 border border-workbench-border p-5 hover:border-workbench-accent/60 hover:bg-workbench-surface/35 transition-all duration-300 group">
+        <!-- Pillar Header -->
+        <div class="flex items-center justify-between pb-3 mb-4 border-b border-workbench-border/60">
+          <h3 class="font-display font-bold text-lg text-workbench-text group-hover:text-workbench-accent transition-colors">
+            {pillar.title}
+          </h3>
+          <span class="font-mono text-[10px] uppercase text-workbench-accent tracking-widest px-2 py-0.5 bg-workbench-surface border border-workbench-border">
+            // {pillar.id}
+          </span>
+        </div>
+
+        <!-- Compact Technology List -->
+        <ul class="flex flex-col gap-2">
+          {pillar.technologies.map((tech) => (
+            <li class="group/tech flex items-center gap-2.5 px-2.5 py-2 bg-workbench-surface/40 hover:bg-workbench-surface/80 border border-workbench-border/50 hover:border-workbench-accent/50 transition-colors">
+              <div class="w-6 h-6 flex items-center justify-center bg-workbench-surface border border-workbench-border/80 p-1 shrink-0">
+                <TechIcon name={tech.name} class="w-3.5 h-3.5" />
+              </div>
+              <span class="font-display font-medium text-xs sm:text-sm text-workbench-text group-hover/tech:text-workbench-accent transition-colors truncate">
+                {tech.name}
+              </span>
             </li>
           ))}
         </ul>
