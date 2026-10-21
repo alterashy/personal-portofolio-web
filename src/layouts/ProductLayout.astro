@@ -44,6 +44,20 @@ const {
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <!-- Pre-hydration Theme Initializer (Anti-FOUC) -->
+    <script is:inline>
+      (function() {
+        try {
+          const saved = localStorage.getItem('altera_deck_mode');
+          if (saved) {
+            document.documentElement.setAttribute('data-deck', saved);
+          } else {
+            document.documentElement.setAttribute('data-deck', 'cyan');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body class="relative min-h-screen bg-workbench-bg">
     <!-- Signature Background Element -->

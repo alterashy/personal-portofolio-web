@@ -1,0 +1,118 @@
+---
+// src/components/layout/DeckSpectrumTuner.astro
+import { THEME_COLORS } from '../../utils/deck-theme';
+---
+
+<div id="theme-color-tuner" class="select-none flex items-center">
+  <!-- Mobile View: Single Non-Interactive Live Dot (Zero clutter) -->
+  <div class="flex md:hidden items-center justify-center px-1" title="Altera Deck Active" aria-hidden="true">
+    <span class="relative flex h-2 w-2">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-workbench-accent opacity-50"></span>
+      <span class="relative inline-flex h-2 w-2 rounded-full bg-workbench-accent"></span>
+    </span>
+  </div>
+
+  <!-- Desktop View: Interactive 4-Dot Palette + Pause Switcher -->
+  <div 
+    class="hidden md:inline-flex items-center gap-1.5 px-2 py-1 bg-workbench-surface/30 border border-workbench-border hover:border-workbench-muted/40 transition-colors duration-200 ease-out"
+    title="Accent theme (Click dot to select or press 'T' to cycle)"
+  >
+    <!-- 4 Clean Color Dots -->
+    <div class="flex items-center gap-1.5" role="group" aria-label="Accent Color Switcher">
+      {THEME_COLORS.map((item) => (
+        <button
+          type="button"
+          data-color-id={item.id}
+          class="theme-dot-btn w-3 h-3 flex items-center justify-center p-0.5 rounded-full transition-transform duration-200 ease-out hover:scale-110 cursor-pointer focus:outline-none"
+          title={`${item.name} Accent`}
+          aria-label={`Switch to ${item.name}`}
+        >
+          <span 
+            class="theme-dot-circle w-2 h-2 rounded-full transition-all duration-200 ease-out"
+            style={`background-color: ${item.accent}; opacity: 0.35;`}
+            data-dot-color={item.id}
+          ></span>
+        </button>
+      ))}
+    </div>
+
+    <!-- Micro Pause / Resume Cycle Toggle -->
+    <button
+      type="button"
+      id="theme-pause-btn"
+      class="flex items-center justify-center w-5 h-5 text-workbench-muted/60 hover:text-workbench-text transition-colors duration-200 ease-out cursor-pointer focus:outline-none ml-0.5"
+      title="Pause / Resume auto-cycle"
+      aria-label="Pause or Resume auto cycle"
+    >
+      <!-- Pause Icon (Default running) -->
+      <svg id="icon-pause" class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+      </svg>
+      <!-- Play Icon (Shown when paused) -->
+      <svg id="icon-play" class="w-2.5 h-2.5 fill-current hidden" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  import { getThemeController } from '../../utils/deck-theme';
+
+  const controller = getThemeController();
+  controller.init();
+
+  const pauseBtn = document.getElementById('theme-pause-btn');
+  const iconPause = document.getElementById('icon-pause');
+  const iconPlay = document.getElementById('icon-play');
+  const dotBtns = document.querySelectorAll('.theme-dot-btn');
+  const dotCircles = document.querySelectorAll('.theme-dot-circle');
+
+  function updateUI(color: any, isPaused: boolean) {
+    dotCircles.forEach((circle) => {
+      const dotId = circle.getAttribute('data-dot-color');
+      if (dotId === color.id) {
+        (circle as HTMLElement).style.opacity = '1';
+        (circle as HTMLElement).style.transform = 'scale(1.25)';
+        (circle as HTMLElement).style.boxShadow = `0 0 6px ${color.accent}`;
+      } else {
+        (circle as HTMLElement).style.opacity = '0.35';
+        (circle as HTMLElement).style.transform = 'scale(1)';
+        (circle as HTMLElement).style.boxShadow = 'none';
+      }
+    });
+
+    if (isPaused) {
+      iconPause?.classList.add('hidden');
+      iconPlay?.classList.remove('hidden');
+      pauseBtn?.setAttribute('title', 'Auto-cycle paused (click to resume)');
+    } else {
+      iconPause?.classList.remove('hidden');
+      iconPlay?.classList.add('hidden');
+      pauseBtn?.setAttribute('title', 'Auto-cycling (click to freeze)');
+    }
+  }
+
+  // Initial UI state
+  updateUI(controller.getCurrentColor(), controller.getIsPaused());
+
+  // Listen for color changes
+  window.addEventListener('deckthemechange', ((e: CustomEvent) => {
+    updateUI(e.detail.color, e.detail.isPaused);
+  }) as EventListener);
+
+  // Pause button
+  pauseBtn?.addEventListener('click', () => {
+    controller.togglePause();
+  });
+
+  // Direct dot click (Desktop only)
+  dotBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const colorId = btn.getAttribute('data-color-id');
+      if (colorId) {
+        controller.setColor(colorId, true);
+      }
+    });
+  });
+</script>

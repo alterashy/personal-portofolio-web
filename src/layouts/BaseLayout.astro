@@ -45,6 +45,21 @@ const {
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <!-- Pre-hydration Theme Initializer (Anti-FOUC) -->
+    <script is:inline>
+      (function() {
+        try {
+          const saved = localStorage.getItem('altera_deck_theme') || localStorage.getItem('altera_deck_mode');
+          if (saved) {
+            const normalized = saved === 'acid' ? 'emerald' : saved === 'forge' ? 'orange' : saved;
+            document.documentElement.setAttribute('data-deck', normalized);
+          } else {
+            document.documentElement.setAttribute('data-deck', 'cyan');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body class="relative min-h-screen">
     <!-- Signature Background Element -->

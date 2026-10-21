@@ -1,12 +1,92 @@
 @import "tailwindcss";
 
+/* Native CSS @property declarations enable hardware-accelerated color interpolation */
+@property --workbench-bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #0B1120;
+}
+@property --workbench-surface {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #131C2E;
+}
+@property --workbench-border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #222F47;
+}
+@property --workbench-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #F8FAFC;
+}
+@property --workbench-muted {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #94A3B8;
+}
+@property --workbench-accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #06B6D4;
+}
+
+:root {
+  /* Anchored, harmonious dark workbench base to prevent disjointed canvas shifts */
+  --workbench-bg: #0B1120;
+  --workbench-surface: #131C2E;
+  --workbench-border: #222F47;
+  --workbench-text: #F8FAFC;
+  --workbench-muted: #94A3B8;
+  --workbench-accent: #06B6D4;
+  
+  /* Balanced, cinematic 650ms transition (smooth and noticeable without being slow) */
+  --deck-transition-speed: 650ms;
+  --deck-transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Color 1: Cyan */
+:root[data-deck="cyan"], html[data-deck="cyan"] {
+  --workbench-bg: #0A101D;
+  --workbench-surface: #121B2D;
+  --workbench-border: #1E2D47;
+  --workbench-accent: #06B6D4;
+}
+
+/* Color 2: Amber */
+:root[data-deck="amber"], html[data-deck="amber"] {
+  --workbench-bg: #0F1117;
+  --workbench-surface: #171A24;
+  --workbench-border: #272B38;
+  --workbench-accent: #F59E0B;
+}
+
+/* Color 3: Emerald */
+:root[data-deck="emerald"], html[data-deck="emerald"],
+:root[data-deck="acid"], html[data-deck="acid"] {
+  --workbench-bg: #0A0F14;
+  --workbench-surface: #121A21;
+  --workbench-border: #1E2A36;
+  --workbench-accent: #10B981;
+}
+
+/* Color 4: Orange */
+:root[data-deck="orange"], html[data-deck="orange"],
+:root[data-deck="forge"], html[data-deck="forge"] {
+  --workbench-bg: #0F0E17;
+  --workbench-surface: #191724;
+  --workbench-border: #2B263B;
+  --workbench-accent: #F0562E;
+}
+
 @theme {
-  --color-workbench-bg: #0B1120;
-  --color-workbench-surface: #151E32;
-  --color-workbench-border: #23314B;
-  --color-workbench-text: #F8FAFC;
-  --color-workbench-muted: #94A3B8;
-  --color-workbench-accent: #F0562E;
+  --color-workbench-bg: var(--workbench-bg);
+  --color-workbench-surface: var(--workbench-surface);
+  --color-workbench-border: var(--workbench-border);
+  --color-workbench-text: var(--workbench-text);
+  --color-workbench-muted: var(--workbench-muted);
+  --color-workbench-accent: var(--workbench-accent);
 
   --font-display: "Outfit", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -19,32 +99,58 @@
     background-image: 
       linear-gradient(to right, var(--color-workbench-border) 1px, transparent 1px),
       linear-gradient(to bottom, var(--color-workbench-border) 1px, transparent 1px);
-    /* Very faint opacity for the grid so it's not distracting */
-    opacity: 0.15;
+    opacity: 0.16;
   }
-  
-
 }
 
-/* Base styles to apply the theme globally */
+/* Base styles and fast, hardware-accelerated morphing */
 @layer base {
   html {
-    scroll-padding-top: 4rem; /* Offset for sticky header (h-16 = 4rem) */
+    scroll-padding-top: 4rem;
   }
 
   body {
     @apply bg-workbench-bg text-workbench-text font-body antialiased selection:bg-workbench-accent/30 selection:text-white;
   }
 
+  /* Targeted smooth transition on elements that change color - zero jank */
+  html,
+  body,
+  header,
+  footer,
+  section,
+  main,
+  nav,
+  article,
+  div,
+  span,
+  h1, h2, h3, h4, h5, h6,
+  p,
+  a,
+  button,
+  svg {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: var(--deck-transition-speed);
+    transition-timing-function: var(--deck-transition-curve);
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
   }
   
-  /* Ensure the grid background is positioned correctly if used as a pseudo element */
   .grid-overlay {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: -1;
+  }
+}
+
+/* Respect user accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }

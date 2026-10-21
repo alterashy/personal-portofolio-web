@@ -19,11 +19,11 @@ const {
   download
 } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center font-display font-bold tracking-wide uppercase transition-colors duration-200 border text-center whitespace-nowrap";
+const baseStyles = "inline-flex items-center justify-center font-display font-bold tracking-wide uppercase transition duration-200 ease-out border text-center whitespace-nowrap cursor-pointer";
 
 const variantStyles = {
-  primary: "px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg bg-workbench-accent text-white border-workbench-accent hover:bg-orange-600",
-  outline: "px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg bg-transparent text-workbench-text border-workbench-border hover:bg-workbench-surface",
+  primary: "px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg bg-workbench-accent text-white border-workbench-accent hover:opacity-85",
+  outline: "px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg bg-transparent text-workbench-text border-workbench-border hover:border-workbench-accent hover:bg-workbench-surface",
   ghost: "px-2 py-2 sm:px-4 sm:py-2 text-xs sm:text-sm bg-transparent text-workbench-muted border-transparent hover:text-workbench-accent hover:bg-workbench-surface"
 };
 

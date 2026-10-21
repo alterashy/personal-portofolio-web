@@ -96,7 +96,7 @@ const architecturalPillars = [
       </div>
       <div class="flex flex-wrap items-center gap-2.5">
         {primaryDrivers.map((driver) => (
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-workbench-surface/80 border border-workbench-border hover:border-workbench-accent/50 transition-colors">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-workbench-surface/80 border border-workbench-border hover:border-workbench-accent/50 transition-colors duration-200 ease-out">
             <TechIcon name={driver} class="w-4 h-4" />
             <span class="font-display font-medium text-xs text-workbench-text">{driver}</span>
           </div>
@@ -108,10 +108,10 @@ const architecturalPillars = [
   <!-- 4 Compact Pillars (Backend, Frontend, Databases, Infra side-by-side) -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
     {architecturalPillars.map((pillar) => (
-      <div class="flex flex-col bg-workbench-surface/20 border border-workbench-border p-5 hover:border-workbench-accent/60 hover:bg-workbench-surface/35 transition-all duration-300 group">
+      <div class="flex flex-col bg-workbench-surface/20 border border-workbench-border p-5 hover:border-workbench-accent/60 hover:bg-workbench-surface/35 transition-colors duration-200 ease-out group">
         <!-- Pillar Header -->
         <div class="flex items-center justify-between pb-3 mb-4 border-b border-workbench-border/60">
-          <h3 class="font-display font-bold text-lg text-workbench-text group-hover:text-workbench-accent transition-colors">
+          <h3 class="font-display font-bold text-lg text-workbench-text group-hover:text-workbench-accent transition-colors duration-200 ease-out">
             {pillar.title}
           </h3>
           <span class="font-mono text-[10px] uppercase text-workbench-accent tracking-widest px-2 py-0.5 bg-workbench-surface border border-workbench-border">
@@ -122,11 +122,11 @@ const architecturalPillars = [
         <!-- Compact Technology List -->
         <ul class="flex flex-col gap-2">
           {pillar.technologies.map((tech) => (
-            <li class="group/tech flex items-center gap-2.5 px-2.5 py-2 bg-workbench-surface/40 hover:bg-workbench-surface/80 border border-workbench-border/50 hover:border-workbench-accent/50 transition-colors">
+            <li class="group/tech flex items-center gap-2.5 px-2.5 py-2 bg-workbench-surface/40 hover:bg-workbench-surface/80 border border-workbench-border/50 hover:border-workbench-accent/50 transition-colors duration-200 ease-out">
               <div class="w-6 h-6 flex items-center justify-center bg-workbench-surface border border-workbench-border/80 p-1 shrink-0">
                 <TechIcon name={tech.name} class="w-3.5 h-3.5" />
               </div>
-              <span class="font-display font-medium text-xs sm:text-sm text-workbench-text group-hover/tech:text-workbench-accent transition-colors truncate">
+              <span class="font-display font-medium text-xs sm:text-sm text-workbench-text group-hover/tech:text-workbench-accent transition-colors duration-200 ease-out truncate">
                 {tech.name}
               </span>
             </li>

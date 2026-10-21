@@ -55,10 +55,10 @@ const projects = [
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
-        class="group flex flex-col justify-between p-7 bg-workbench-surface/20 border border-workbench-border hover:border-workbench-accent/70 hover:bg-workbench-surface/40 transition-all duration-300 relative overflow-hidden"
+        class="group flex flex-col justify-between p-7 bg-workbench-surface/20 border border-workbench-border hover:border-workbench-accent/70 hover:bg-workbench-surface/40 transition-colors duration-200 ease-out relative overflow-hidden"
       >
         <!-- Structural corner accent on hover -->
-        <div class="absolute top-0 right-0 w-12 h-12 bg-linear-to-bl from-workbench-accent/20 to-transparent translate-x-full -translate-y-full group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300 pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-12 h-12 bg-linear-to-bl from-workbench-accent/20 to-transparent translate-x-full -translate-y-full group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-200 ease-out pointer-events-none"></div>
 
         <div>
           <!-- Meta Top Bar -->
@@ -71,7 +71,7 @@ const projects = [
             </span>
           </div>
 
-          <h3 class="font-display font-bold text-2xl text-workbench-text mb-1 group-hover:text-workbench-accent transition-colors">
+          <h3 class="font-display font-bold text-2xl text-workbench-text mb-1 group-hover:text-workbench-accent transition-colors duration-200 ease-out">
             {project.name}
           </h3>
           <p class="font-mono text-xs text-workbench-muted/80 mb-4">
@@ -90,7 +90,7 @@ const projects = [
           </div>
           <div class="flex flex-wrap gap-2">
             {project.stack.map((tech) => (
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-workbench-surface/90 border border-workbench-border font-mono text-[11px] text-workbench-text hover:border-workbench-accent/40 hover:text-white transition-colors">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-workbench-surface/90 border border-workbench-border font-mono text-[11px] text-workbench-text hover:border-workbench-accent/40 hover:text-white transition-colors duration-200 ease-out">
                 <TechIcon name={tech} class="w-3.5 h-3.5" />
                 <span>{tech}</span>
               </span>
