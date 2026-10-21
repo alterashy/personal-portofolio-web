@@ -21,7 +21,7 @@ const customIcons: Record<string, string> = {
 
 // Aliases mapping human-readable skills or project tech items to canonical icon names
 const skillAliases: Record<string, string> = {
-  // Full-Stack & APIs
+  // Full Stack & APIs
   'typescript': 'typescript',
   'python': 'python',
   'nestjs': 'nestjs',

@@ -1,44 +1,60 @@
 ---
 // src/pages/products/index.astro
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout 
-  title="Products - Syifa Maulaya" 
-  description="Explore the products and systems engineered by Syifa Maulaya."
+<BaseLayout
+  title="Products | Altera Space"
+  description="Tools, web applications, and software projects built by Syifa Maulaya inside Altera Space."
 >
-  <main class="w-full max-w-7xl mx-auto px-6 pt-16 pb-32 min-h-[80vh] border-l border-r border-workbench-border">
-    
+  <main
+    class="w-full max-w-7xl mx-auto px-6 pt-16 pb-32 min-h-[80vh] border-l border-r border-workbench-border"
+  >
     <div class="flex items-center gap-4 mb-8">
       <div class="h-px w-8 bg-workbench-accent"></div>
-      <span class="font-mono text-xs tracking-widest text-workbench-accent uppercase">
-        // Product Directory
+      <span
+        class="font-mono text-xs tracking-widest text-workbench-accent uppercase"
+      >
+        // altera.space // Product Directory
       </span>
     </div>
 
-    <h1 class="text-4xl md:text-6xl font-display font-bold text-workbench-text mb-16">
-      Engineered Products.
+    <h1
+      class="text-4xl md:text-6xl font-display font-bold text-workbench-text mb-4"
+    >
+      Altera Space Products
     </h1>
+    <p class="font-body text-base text-workbench-muted max-w-2xl mb-16">
+      Tools, web applications, and software projects built by Syifa Maulaya.
+    </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Placeholder slots for upcoming products -->
-      <div class="border border-workbench-border border-dashed p-12 flex flex-col items-center justify-center text-center bg-workbench-surface/10 min-h-[280px]">
+      <div
+        class="border border-workbench-border border-dashed p-12 flex flex-col items-center justify-center text-center bg-workbench-surface/10 min-h-70"
+      >
         <div class="w-3 h-3 bg-workbench-muted/40 mb-4"></div>
-        <span class="font-mono text-sm tracking-widest text-workbench-muted uppercase mb-2">
+        <span
+          class="font-mono text-sm tracking-widest text-workbench-muted uppercase mb-2"
+        >
           [ Slot Available ]
         </span>
         <p class="font-body text-xs text-workbench-muted/60 max-w-xs">
-          New standalone tools and SaaS systems currently in development.
+          New web tools and SaaS applications currently in development.
         </p>
       </div>
 
-      <div class="border border-workbench-border border-dashed p-12 flex flex-col items-center justify-center text-center bg-workbench-surface/10 min-h-[280px]">
+      <div
+        class="border border-workbench-border border-dashed p-12 flex flex-col items-center justify-center text-center bg-workbench-surface/10 min-h-70"
+      >
         <div class="w-3 h-3 bg-workbench-muted/40 mb-4"></div>
-        <span class="font-mono text-sm tracking-widest text-workbench-muted uppercase mb-2">
+        <span
+          class="font-mono text-sm tracking-widest text-workbench-muted uppercase mb-2"
+        >
           [ In Progress ]
         </span>
         <p class="font-body text-xs text-workbench-muted/60 max-w-xs">
-          Product architectures and public utilities under active engineering.
+          Internal utilities and web projects currently being built.
         </p>
       </div>
     </div>
